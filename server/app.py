@@ -6,8 +6,7 @@ app = Flask(__name__)
 #when user visits site/index, they see the following:
 def home():
     #this is the function responsible for generating the home page
-    return "hello world"
-    # return render_template('index.html') 
+    return render_template('index.html', token="flask-react") 
 
 
 # @app.route('/all')
