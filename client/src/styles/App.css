@@ -59,9 +59,12 @@ label {
     color: white;
 } 
 
+.inverted-btn + .inverted-btn {
+    margin-left: 0.5rem !important;
+}
+
 .inverted-btn {
     border-color: white !important;
     color: white !important;
     margin: 1rem 0 !important;
 }
-

@@ -10,11 +10,16 @@ export default class Home extends Component {
                         Connections
                     </h1>
                     <p className='home__tagline'>
-                        Your one-stop shop to keep track of the people you meet people 
+                        Your one-stop shop to keep track of the people you meet people
                     </p>
-                    <Button variant='outlined' size='large' className='inverted-btn'>
-                        Login
-                    </Button>
+                    <div className='home__btns'>
+                        <Button variant='outlined' size='large' className='inverted-btn'>
+                            Login
+                        </Button>
+                        <Button variant='outlined' size='large' className='inverted-btn'>
+                            Register
+                        </Button>
+                    </div>
                 </main>
             </div>
         )
