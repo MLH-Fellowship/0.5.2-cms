@@ -4,11 +4,11 @@ We believe that the connections made during an internship/fellowship/etc is the 
 ## To run the app locally
 ### Backend
 In `/server` run the following commands
-0. `$pip install virtualenv`
-1. `$virtualenv venv; source venv/bin/activate`
-2. `$pip install -r requirements.txt`
-3. `$python app.py`
+1. `$pip install virtualenv`
+2. `$virtualenv venv; source venv/bin/activate`
+3. `$pip install -r requirements.txt`
+4. `$python app.py`
 ### Frontend
 In `/client` run the following commands
-0. `$npm install`
-1. `$npm run watch` if in development, else `$npm run build`
+1. `$npm install`
+2. `$npm run watch` if in development, else `$npm run build`
