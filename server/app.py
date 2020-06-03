@@ -1,32 +1,17 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
+# FOR TESTING API REQUESTS 
 @app.route('/api/test', methods=['GET'])
 def test():
     print('hello word')
-    return {'res': 'Yay'}
+    return jsonify({'res': 'Yay'})
 
 @app.route('/')
-@app.route('/<path:path>')
+@app.route('/<path:path>') # catch all routes and let react-router handle them
 def home():
-    #this is the function responsible for generating the home page
     return render_template('index.html', token="flask-react") 
-
-
-# @app.route('/all')
-# def viewAll():
-   
-#     return render_template('update.html')
-
-# @app.route('/user')
-# def viewUser():
-    
-#     return render_template('user.html')
-        
-# @app.route('/group')
-# def groups():
-#     return render_template('groups.html')
     
 if __name__ == '__main__':
     app.run(debug=True)
