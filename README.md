@@ -11,4 +11,6 @@ In `/server` run the following commands
 ### Frontend
 In `/client` run the following commands
 1. `$npm install`
-2. `$npm run watch` if in development, else `$npm run build`
+2. `$npm run watch` if in development, else `$npm run build
+
+Navigate to `http://127.0.0.1:5000/` when done! 
