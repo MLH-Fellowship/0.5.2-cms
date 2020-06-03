@@ -28,13 +28,14 @@ h5 {
 }
 
 h1 {
-    font-size: var(--primary-color);
+    font-size: var(--title-font-size);
 }
 
 p,
 a,
 ul,
 label {
+    font-size: var(--body-font-size);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -46,14 +47,21 @@ label {
     background-image: url('../assets//background.svg');
     background-size: cover;
 }
-.home > main {
+.home__container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-align: left;
     align-items: center;
 }
 .home__title,
 .home__tagline {
     color: white;
 } 
+
+.inverted-btn {
+    border-color: white !important;
+    color: white !important;
+    margin: 1rem 0 !important;
+}
 
