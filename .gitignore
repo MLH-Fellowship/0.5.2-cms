@@ -1,6 +1,6 @@
+node_modules/
+server/static/react/
 .vscode/
-
 *.pyc
 __pycache__/
-
-my_venv/
+venv/
