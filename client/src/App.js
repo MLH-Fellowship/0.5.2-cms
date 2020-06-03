@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { get } from './utilities';
+import { 
+  BrowserRouter as Router, 
+  Route 
+} from 'react-router-dom';
+import Home from './components/Home';
+import './styles/App.css';
 
 class App extends Component {
-  async componentDidMount() {
-    /*
-    Purely for testing if server hooked up properly
-    with front end react app
-    */
-    const data = await get('/api/test');
-    console.log(data);
-  }
   render() {
     return (
-      <div className="App">
-        Hello World
-      </div>
+      <Router>
+        <Route path='/' component={Home}/>
+      </Router>
     );
   }
 }
