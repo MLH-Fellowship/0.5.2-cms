@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { get } from './utilities';
+import AllContacts from './AllContacts';
 
 class App extends Component {
   async componentDidMount() {
@@ -12,8 +13,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        Hello World
+      <div>
+        <AllContacts/>
       </div>
     );
   }
