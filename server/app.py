@@ -2,8 +2,13 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+@app.route('/api/test', methods=['GET'])
+def test():
+    print('hello word')
+    return {'res': 'Yay'}
+
 @app.route('/')
-#when user visits site/index, they see the following:
+@app.route('/<path:path>')
 def home():
     #this is the function responsible for generating the home page
     return render_template('index.html', token="flask-react") 
@@ -23,4 +28,5 @@ def home():
 # def groups():
 #     return render_template('groups.html')
     
-app.run(debug=True, port=3000)
+if __name__ == '__main__':
+    app.run(debug=True)
