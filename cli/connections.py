@@ -5,7 +5,6 @@ app = typer.Typer()
 
 @app.command()
 
-
 def start():
   user = input("i need to verify your identity, please enter your name")
   typer.echo(f"Welcome {user}!select the command you want to do by typing python connections.py commandname")
