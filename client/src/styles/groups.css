@@ -1,0 +1,15 @@
+.groups {
+    height: 90vh;
+    width: 80vw;
+    position: relative;
+    margin: auto;
+}
+
+.groups__title {
+    font-size: 48px;
+}
+
+.group-card.large {
+    height: 400px;
+    width: max(20%, 300px);
+}

@@ -6,6 +6,7 @@ import {
 import Home from './components/pages/Home';
 import AllContacts from './components/pages/AllContacts';
 import Profile from './components/pages/Profile';
+import ContactBook from './components/pages/ContactBook';
 import Navbar from './components/modules/Navbar';
 import './styles/App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -20,6 +21,10 @@ class App extends Component {
         <Route path='/all'>
           <Navbar activeItem='all'/>
           <AllContacts/>
+        </Route>
+        <Route path='/groups'>
+          <Navbar activeItem='groups'/>
+          <ContactBook/>
         </Route>
         <Route path='/profile/:id'>
           <Navbar activeItem=''/>

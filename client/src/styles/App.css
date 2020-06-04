@@ -4,6 +4,7 @@
     --title-font-size: 80px;
     --body-font-size: 18px;
     --primary-color: #373648;
+    --primary-color-light: #808080;
     --secondary-color: #E48900;
 }
 
@@ -49,6 +50,7 @@ h4,
 h5 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+    color: var(--primary-color);
 }
 
 h1 {
@@ -61,6 +63,7 @@ ul,
 label {
     font-size: var(--body-font-size);
     font-family: 'Roboto', sans-serif;
+    color: var(--primary-color-light);
 }
 
 .home {

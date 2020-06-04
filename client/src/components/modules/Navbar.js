@@ -17,7 +17,7 @@ export default class Navbar extends Component {
                         All Connections
                     </p>
                 </Link>
-                <Link>
+                <Link to='/groups'>
                     <p className={`navbar__item ${activeItem === 'groups' ? 'active' : ''}`}>
                         Contact Book
                     </p>

@@ -7,6 +7,7 @@ import {
     Button,
     Image,
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const Card = (props) => {
     return (
@@ -18,7 +19,9 @@ const Card = (props) => {
             <div className='profile-card__content'>
                 <h3 className='profile-card__name'>{props.name}</h3>
                 <p className='profile-card__meta'>{props.date_met}</p>
-                <Button circular icon='arrow right' floated='right' className='expand-btn'/>
+                <Link to={`/profile/${props.id}`}>
+                    <Button circular icon='arrow right' floated='right' className='expand-btn'/>
+                </Link>
             </div>
         </div>
     )

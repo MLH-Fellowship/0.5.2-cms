@@ -89,15 +89,18 @@
     align-self: flex-start;
 }
 
+.groups__cards,
 .group__cards {
     overflow-x: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
 }
 
+.groups__cards::-webkit-scrollbar,
 .group__cards::-webkit-scrollbar {
     display: none;
 }
+.groups__cards-row,
 .group__cards-row {
     white-space: nowrap;
 }
