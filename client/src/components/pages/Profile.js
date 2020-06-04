@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Grid,
-    Segment,
+    TextArea,
     Image,
     Button,
     Icon,
@@ -106,6 +106,55 @@ class Sidebar extends Component {
     } 
 }
 
+class MainInfo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            edited_notes: this.props.notes,
+        }
+    }
+    placeHolderGroups = (num) => {
+        const cards = [];
+        for(let i = 0; i < num; i++) {
+            cards.push(<div className='group-card placeholder'></div>);
+        }
+
+        return cards;
+    }
+    render() {
+        return (
+            <div className='main-profile'>
+                <Grid centered divided='vertically' >
+                    <Grid.Row stretched>
+                        <Grid.Column>
+                            <h2>Groups</h2>
+                            <div className='group__cards'>
+                                <div className='group__cards-row'>
+                                    {this.placeHolderGroups(4)}
+                                </div>
+                            </div>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row stretched>
+                        <Grid.Column>
+                            <h2>Notes</h2>
+                            <TextArea 
+                                className='notes'
+                                value={this.state.edited_notes}
+                                onChange={(e, data) => this.setState({ edited_notes: e.target.value })}    
+                            />
+                            <div className='btn-container'>
+                                <Button onClick={() => this.setState({ edited_notes: this.props.notes })}>Undo All</Button>
+                                <Button onClick={() => this.props.saveNotes(this.state.edited_notes)}>Save Changes</Button>
+                            </div>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </div>
+        )
+    }
+}
+
 export default class Profile extends Component {
     constructor(props) {
         super(props);
@@ -113,24 +162,38 @@ export default class Profile extends Component {
             profile: {...FAKE_CONTACTS[0] },
         }
     }
+
+    updateNotes = (notes) => {
+        const profile = {...this.state.profile};
+        profile.notes = notes;
+        this.setState({ profile });
+    }
     
     render() {
         return(
-            <div className='profile'>
-                <Grid stackable>
-                    <Grid.Row>
-                        <Grid.Column width={6}>
-                            <Sidebar 
-                                profile={this.state.profile}
-                                updateProfile={(profile) => this.setState({ profile })}
+            <>
+                <nav className='navbar'>
+                    {/* Placeholder for when we do have a navbar */}
+                </nav>
+                <div className='profile'>
+                    <Grid stackable>
+                        <Grid.Row>
+                            <Grid.Column width={6}>
+                                <Sidebar 
+                                    profile={this.state.profile}
+                                    updateProfile={(profile) => this.setState({ profile })}
+                                    />
+                            </Grid.Column>
+                            <Grid.Column width={10}>
+                                <MainInfo
+                                    saveNotes={this.updateNotes}
+                                    notes={this.state.profile.notes}
                                 />
-                        </Grid.Column>
-                        <Grid.Column width={10}>
-                            <Segment></Segment>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </div>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </div>
+            </>
         );
     }
 }

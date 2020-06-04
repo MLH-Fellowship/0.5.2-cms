@@ -1,3 +1,10 @@
+.profile {
+    position: relative;
+    margin: auto;
+    width: 80vw;
+    height: 90vh;
+}
+
 .ui.image.medium{
     border-radius: 25px 25px 0 0 ;
     width: 210px !important;
@@ -35,17 +42,10 @@
     padding-bottom: 0;
 }
 
-.profile {
-    position: relative;
-    width: 80vw;
-    height: 100vh;
-    margin: auto;
-}
-
 .sidebar {
-    height: 100vh;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
 }
@@ -87,4 +87,47 @@
 }
 .edit-btn {
     align-self: flex-start;
+}
+
+.group__cards {
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.group__cards::-webkit-scrollbar {
+    display: none;
+}
+.group__cards-row {
+    white-space: nowrap;
+}
+.group-card {
+    display: inline-block;
+    width: max(23%, 150px);
+    height: 200px;
+    background-color: #f0f0f0; 
+    margin-right: 0.5rem;
+    border-radius: 20px;
+}
+
+.notes {
+    padding: 1rem;
+    height: 13.5rem;
+    border-color: rgba(34,36,38,.15);
+    border-radius: .28571429rem;
+}
+
+.main-profile{
+    height: 100%;
+    margin: auto;
+}
+.main-profile > .grid {
+    display: flex;
+}
+.navbar {
+    height: 10vh;
+}
+
+.btn-container {
+    margin-top: 1rem;
 }
