@@ -6,6 +6,7 @@ import {
 import Home from './components/pages/Home';
 import AllContacts from './components/pages/AllContacts';
 import Profile from './components/pages/Profile';
+import Navbar from './components/modules/Navbar';
 import './styles/App.css';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -13,9 +14,17 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Route exact path='/' component={Home}/>
-        <Route path='/all' component={AllContacts}/>
-        <Route path='/profile/:id' component={Profile}/>
+        <Route exact path='/'>
+          <Home/>
+        </Route>
+        <Route path='/all'>
+          <Navbar activeItem='all'/>
+          <AllContacts/>
+        </Route>
+        <Route path='/profile/:id'>
+          <Navbar activeItem=''/>
+          <Profile/>
+        </Route>
       </Router>
     );
   }

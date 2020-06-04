@@ -171,29 +171,24 @@ export default class Profile extends Component {
     
     render() {
         return(
-            <>
-                <nav className='navbar'>
-                    {/* Placeholder for when we do have a navbar */}
-                </nav>
-                <div className='profile'>
-                    <Grid stackable>
-                        <Grid.Row>
-                            <Grid.Column width={6}>
-                                <Sidebar 
-                                    profile={this.state.profile}
-                                    updateProfile={(profile) => this.setState({ profile })}
-                                    />
-                            </Grid.Column>
-                            <Grid.Column width={10}>
-                                <MainInfo
-                                    saveNotes={this.updateNotes}
-                                    notes={this.state.profile.notes}
+            <div className='profile'>
+                <Grid stackable>
+                    <Grid.Row>
+                        <Grid.Column width={6}>
+                            <Sidebar 
+                                profile={this.state.profile}
+                                updateProfile={(profile) => this.setState({ profile })}
                                 />
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
-                </div>
-            </>
+                        </Grid.Column>
+                        <Grid.Column width={10}>
+                            <MainInfo
+                                saveNotes={this.updateNotes}
+                                notes={this.state.profile.notes}
+                            />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </div>
         );
     }
 }
