@@ -3,5 +3,6 @@ server/static/react/
 .vscode/
 *.pyc
 __pycache__/
+Pipfile
 venv/
-.vscode/
+.env
