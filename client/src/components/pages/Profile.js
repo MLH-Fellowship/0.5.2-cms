@@ -21,7 +21,7 @@ function LabelText(props) {
                     defaultValue={props.text}
                     onChange={(e, data) => props.handleOnChange(e.target.value)}
                 />
-                : <Input transparent as='p'>{props.text}</Input>
+                : <Input as='p'>{props.text}</Input>
             }
         </div>
     )
