@@ -4,3 +4,6 @@ server/static/react/
 *.pyc
 __pycache__/
 venv/
+.replit
+poetry.lock
+pyproject.toml
