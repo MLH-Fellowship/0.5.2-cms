@@ -2,7 +2,7 @@ export const FAKE_CONTACTS = [
     {
         id: 0,
         name: 'amy',
-        date_met: 'June 2020',
+        date_met: '2020-06',
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
@@ -11,7 +11,7 @@ export const FAKE_CONTACTS = [
     {
         id: 1,
         name: 'amy',
-        date_met: 'June 2020',
+        date_met: '2020-06',
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
@@ -20,7 +20,7 @@ export const FAKE_CONTACTS = [
     {
         id: 2,
         name: 'amy',
-        date_met: 'June 2020',
+        date_met: '2020-06',
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
@@ -29,7 +29,7 @@ export const FAKE_CONTACTS = [
     {
         id: 3,
         name: 'amy',
-        date_met: 'June 2020',
+        date_met: '2020-06',
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
@@ -38,7 +38,7 @@ export const FAKE_CONTACTS = [
     {
         id: 4,
         name: 'amy',
-        date_met: 'June 2020',
+        date_met: '2020-06',
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
