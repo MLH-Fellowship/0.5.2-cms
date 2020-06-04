@@ -15,8 +15,7 @@ def register():
         
         username = request.form['username']
         pw = request.form['password']
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
+        full_name = request.form['full_name']
         db = get_db()
         error = None
 
@@ -24,10 +23,8 @@ def register():
             error = 'Username is required.'
         elif not pw:
             error = 'Password is required.'
-        elif not first_name:
-            error = 'First name is required.'
-        elif not last_name:
-            error = 'Last name is required.'
+        elif not full_name:
+            error = 'Full name is required.'
         elif db.execute(
             'SELECT id FROM person WHERE username = ?', (username,)
         ).fetchone() is not None:
@@ -50,8 +47,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         pw = request.form['password']
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
+        full_name = request.form['full_name']
         db = get_db()
         error = None
         user = db.execute(

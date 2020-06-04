@@ -1,17 +1,19 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask
+from database.db import initialize_db
+from flask_restful import Api
+from resources.routes import initialize_routes
 
 app = Flask(__name__)
+api = Api(app)
 
-# FOR TESTING API REQUESTS 
-@app.route('/api/test', methods=['GET'])
-def test():
-    print('hello word')
-    return jsonify({'res': 'Yay'})
 
-@app.route('/')
-@app.route('/<path:path>') # catch all routes and let react-router handle them
-def home():
-    return render_template('index.html', token="flask-react") 
-    
-if __name__ == '__main__':
-    app.run(debug=True)
+app.config['MONGODB_SETTINGS'] = {
+    'host': 'mongodb://localhost/27017'
+}
+
+
+initialize_db(app)
+initialize_routes(api)
+
+
+app.run()
