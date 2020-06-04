@@ -8,7 +8,7 @@ api = Api(app)
 
 
 app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb://localhost/27017'
+    'host': 'mongodb://localhost/contacts'
 }
 
 
