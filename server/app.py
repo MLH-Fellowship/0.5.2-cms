@@ -10,7 +10,7 @@ def test():
 
 @app.route('/')
 @app.route('/<path:path>') # catch all routes and let react-router handle them
-def home():
+def home(path=''):
     return render_template('index.html', token="flask-react") 
     
 if __name__ == '__main__':

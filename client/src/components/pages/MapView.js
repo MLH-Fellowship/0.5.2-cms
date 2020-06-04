@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 export default class MapView extends Component {
     render() {
         return (
@@ -8,4 +7,4 @@ export default class MapView extends Component {
             </div>
         )
     }
-}
+}  

@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { get } from './utilities';
-import AllContacts from './AllContacts';
+import AllContacts from './components/pages/AllContacts';
+import { 
+  BrowserRouter as Router, 
+  Route 
+} from 'react-router-dom';
+import Home from './components/pages/Home';
+import './styles/App.css';
 
 class App extends Component {
-  async componentDidMount() {
-    /*
-    Purely for testing if server hooked up properly
-    with front end react app
-    */
-    const data = await get('/api/test');
-    console.log(data);
-  }
   render() {
     return (
-      <div>
-        <AllContacts/>
-      </div>
+      <Router>
+        <Route exact path='/' component={Home}/>
+        <Route path='/all' component={AllContacts}/>
+      </Router>
     );
   }
 }
