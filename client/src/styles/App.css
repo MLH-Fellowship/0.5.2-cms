@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -5,4 +10,20 @@
 .card-profile {
     width: 10rem;
     margin-right: 1rem;
+}
+
+.contacts {
+    width: 80vw;
+    height: 100vh;
+    margin: auto;
+    position: relative;
+}
+.contacts__title {
+    font-size: 48px;
+}
+.fa-btn {
+    position: absolute !important;
+    bottom: 10px;
+    right: 10px;
+    box-shadow: none !important;
 }

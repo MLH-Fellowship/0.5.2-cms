@@ -5,6 +5,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add'
 
 import './styles/App.css';
 
@@ -32,9 +34,20 @@ export default class AllContacts extends Component {
         ));
 
         return (
-            <main className='cards-container'>
-                {cards}
-            </main>
+            <>
+                <div className='contacts'>
+                    <h3 className='contacts__title header'>
+                        All Contacts
+                    </h3>
+                    <main className='cards-container'>
+                        {cards}
+                    </main>
+                    <Fab className='fa-btn' color='primary' variant='extended'>
+                        <AddIcon/> 
+                        Add Contact
+                    </Fab>
+                </div>
+            </>
         )
     }
 }

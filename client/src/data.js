@@ -6,6 +6,7 @@ export const FAKE_CONTACTS = [
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
+        image: 'https://api.adorable.io/avatars/285/test.png',
     },
     {
         id: 1,
@@ -14,6 +15,7 @@ export const FAKE_CONTACTS = [
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
+        image: 'https://api.adorable.io/avatars/285/test.png',
     },
     {
         id: 2,
@@ -22,6 +24,7 @@ export const FAKE_CONTACTS = [
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
+        image: 'https://api.adorable.io/avatars/285/test.png',
     },
     {
         id: 3,
@@ -30,5 +33,6 @@ export const FAKE_CONTACTS = [
         location: 'New York, NY',
         email: 'something@something.com',
         notes: 'MLH Fellow',
+        image: 'https://api.adorable.io/avatars/285/test.png',
     },
 ];
