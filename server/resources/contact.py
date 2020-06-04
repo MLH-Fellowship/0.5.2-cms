@@ -5,7 +5,7 @@ from flask_restful import Resource
 class ContactsApi(Resource):
     def get(self):
         contact = Contact.objects.to_json()
-        return Response(contacts, mimetype='application/json', status=200)
+        return Response(contact, mimetype='application/json', status=200)
     
     def post(self):
         body = request.get_json()
