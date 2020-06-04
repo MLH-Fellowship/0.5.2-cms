@@ -4,3 +4,4 @@ server/static/react/
 *.pyc
 __pycache__/
 venv/
+.vscode/
