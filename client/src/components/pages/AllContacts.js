@@ -1,56 +1,42 @@
 import React, { Component } from 'react';
 import { FAKE_CONTACTS } from '../../data';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add'
-import { styled } from '@material-ui/core/styles';
-import { Modal } from 'semantic-ui-react';
+import '../../styles/profile.css';
 import '../../styles/App.css';
 import AddContactForm from '../modules/AddContactForm';
+import { 
+    Button,
+    Image,
+} from 'semantic-ui-react';
 
-const Avatar = styled(CardMedia)({
-    height: 250, 
-})
+const Card = (props) => {
+    return (
+        <div className='profile-card'>
+            <Image
+                size='medium'
+                src={props.image}
+            />
+            <div className='profile-card__content'>
+                <h3 className='profile-card__name'>{props.name}</h3>
+                <p className='profile-card__meta'>{props.date_met}</p>
+                <Button circular icon='arrow right' floated='right' className='expand-btn'/>
+            </div>
+        </div>
+    )
+}
 
 export default class AllContacts extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            openForm: false,
-        }
+        this.state = {}
     }
     
     render() {
         const cards = FAKE_CONTACTS.map((contact, i) => (
-            <Card className='card-profile' variant='outlined'>
-                <Avatar
-                    image={contact.image}
-                    title={contact.name + '_avatar'}
-                />
-                <CardContent>
-                    <Typography variant='h5' component='h2'>
-                        {contact.name}
-                    </Typography>
-                    <Typography>
-                        {contact.location}
-                    </Typography>
-                    <Typography variant='body2'>
-                        {`${contact.date_met.getMonth() + 1} - ${contact.date_met.getFullYear()}`}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size='small'>
-                        View Profile
-                    </Button>
-                </CardActions>
-            </Card>
-        ));
-
+            <Card
+                {...contact}
+            />
+        ))
+        
         return (
             <>
                 <div className='contacts'>

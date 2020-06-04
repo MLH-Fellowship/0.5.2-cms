@@ -1,0 +1,33 @@
+.ui.image.medium{
+    border-radius: 25px 25px 0 0 ;
+    width: 210px !important;
+  }
+  
+  .profile-card{
+    border-radius: 25px;
+    box-shadow: 2px 2px 25px rgba(0,0,0,0.05);
+    margin: 0.5rem;
+  }
+  
+  .profile-card__content {
+    padding: 1rem 2rem 0 2rem;
+  }
+  
+  .profile-card__meta,
+  .profile-card__name {
+    margin: 0;
+  }
+  
+  .profile-card__name {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Montserrat, sans-serif;
+  }
+  .profile-card__meta {
+    opacity: 0.5;
+    font-size: 14px;
+  }
+  .expand-btn {
+    background-color: white !important;
+    margin-right: -1.5rem !important;
+  }
