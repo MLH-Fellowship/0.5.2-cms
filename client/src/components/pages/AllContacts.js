@@ -8,30 +8,14 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add'
-import Modal from '@material-ui/core/Modal'
 import { styled } from '@material-ui/core/styles';
-
+import { Modal } from 'semantic-ui-react';
 import '../../styles/App.css';
+import AddContactForm from '../modules/AddContactForm';
 
 const Avatar = styled(CardMedia)({
     height: 250, 
 })
-
-class AddContactForm extends Component {
-    render() {
-        return (
-            <Modal
-                open={this.props.open}
-                onClose={this.props.onClose}
-            >
-                <p>
-                Hello World
-                </p>
-            </Modal>
-        )
-    }
-}
-
 
 export default class AllContacts extends Component {
     constructor(props) {
@@ -76,14 +60,7 @@ export default class AllContacts extends Component {
                     <main className='cards-container'>
                         {cards}
                     </main>
-                    <Fab 
-                        onClick={() => this.setState({ open: true })}
-                        className='fa-btn' 
-                        color='primary' 
-                        variant='extended'>
-                        <AddIcon/> 
-                        Add Contact
-                    </Fab>
+                    <AddContactForm/>
                 </div>
             </>
         )

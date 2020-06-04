@@ -87,8 +87,10 @@ label {
     margin-left: 0.5rem !important;
 }
 
-.inverted-btn {
-    border-color: white !important;
-    color: white !important;
-    margin: 1rem 0 !important;
-}
+.new-connection {
+    padding: 1em 2em 2em 2em;
+  }
+  
+  .new-connection__form {
+    margin: 2em 0;
+  }

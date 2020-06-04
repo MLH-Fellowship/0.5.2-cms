@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Home from './components/pages/Home';
 import './styles/App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
   render() {
