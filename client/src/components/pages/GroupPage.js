@@ -4,9 +4,17 @@ import {
     Grid,
 } from 'semantic-ui-react';
 import { Card } from './AllContacts';
+import { Redirect } from 'react-router-dom';
+import GlobalContext from '../../GlobalContext';
 
 export default class GroupPage extends Component {
+    static contextType = GlobalContext
+
     render() {
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
+
         const cards = FAKE_GROUPS[0].contacts.map((contact) => (
             <Card
                 className='profile-card'
@@ -16,6 +24,7 @@ export default class GroupPage extends Component {
                 date_met={contact.date_met}
             />
         ))
+
         return (
         <>
             <div 
