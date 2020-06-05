@@ -6,23 +6,23 @@ class Contact(db.Document):
     email = db.EmailField(required=True)
     location = db.StringField(required=True)
     date = db.StringField(required=True)
+    group = db.ReferenceField('Group')
     socials = db.ListField(required=True)
     notes = db.StringField(required=True)
-    groups = db.ListField(default=list)
     added_by = db.ReferenceField('User')
 
 class Group(db.Document):
     group = db.StringField(required=True)
     description = db.StringField(required=True)
-    contacts = db.ListField(required=True)
+    contacts = db.ListField(db.ReferenceField('Contact'), default=list)
     added_by = db.ReferenceField('User')
 
 class User(db.Document):
     username = db.StringField(required=True, unique=True)
-    # TODO: will not allow for duplicate fullname for some reason?
-    fullname = db.StringField(required=True) 
+    fullname = db.StringField() 
     password = db.StringField(required=True, min_length=6)
     contacts = db.ListField(db.ReferenceField('Contact', reverse_delete_rule=db.PULL), default=list)
+    groups = db.ListField(db.ReferenceField('Group', reverse_delete_rule=db.PULL), default=list)
 
     def hash_password(self):
         self.password = generate_password_hash(self.password).decode('utf8')
