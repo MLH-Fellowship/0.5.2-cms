@@ -14,7 +14,7 @@ class RegisterApi(Resource):
         user.hash_password()
         user.save()
         id = user.id
-        return {'id': str(id), 'username': user.username, 'groups': user.groups, 'contacts': user.contacts}, 200
+        return {'id': str(id), 'username': user.username, 'groups': user.groups, 'contacts': user.contacts, 'error':''}, 200
 
 
 class LoginApi(Resource):
@@ -30,4 +30,4 @@ class LoginApi(Resource):
 
         expires = datetime.timedelta(days=7)
         access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-        return {'id': str(id), 'username': user.username, 'groups': user.groups, 'contacts': user.contacts}, 200
+        return {'id': str(id), 'username': user.username, 'groups': user.groups, 'contacts': user.contacts, 'error': ''}, 200

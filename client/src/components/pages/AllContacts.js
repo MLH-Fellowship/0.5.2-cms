@@ -59,9 +59,9 @@ export default class AllContacts extends Component {
     }
     
     render() {
-        // if (!this.context.user_id) {
-        //     return <Redirect to='/'/>
-        // }
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
 
         if (this.state.redirect) {
             return <Redirect to='/profile/view'/>
