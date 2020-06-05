@@ -12,7 +12,7 @@ class Contact(db.Document):
 
 class User(db.Document):
     username = db.StringField(required=True, unique=True)
-    fullanem = db.StringField(required=True, unique=True)
+    fullname = db.StringField(required=True, unique=True)
     password = db.StringField(required=True, unique=True, min_length=6)
     contacts = db.ListField(db.ReferenceField('Contact', reverse_delete_rule=db.PULL))
 
