@@ -1,4 +1,5 @@
-from flask import Response, request
+import json
+from flask import Response, request, jsonify
 from flask_jwt_extended import create_access_token
 from database.models import User
 from database.models import Contact
@@ -20,7 +21,7 @@ class RegisterApi(Resource):
 class LoginApi(Resource):
     def post(self):
         body = request.get_json()
-        user = User.objects.get(username=body.get('username'))
+        user = User.objects.get(username=body['username'])
         print(user)
         # TODO: account for case where username was invalid 
         authorized = user.check_password(body.get('password'))
@@ -30,4 +31,5 @@ class LoginApi(Resource):
 
         expires = datetime.timedelta(days=7)
         access_token = create_access_token(identity=str(user.id), expires_delta=expires)
+            
         return {'id': str(id), 'username': user.username, 'groups': user.groups, 'contacts': user.contacts, 'error': ''}, 200

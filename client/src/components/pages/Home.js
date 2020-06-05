@@ -29,7 +29,7 @@ class LoginForm extends Component {
         const res = await post('/api/auth/login', body);
         console.log(res); 
         if (!res.error) {
-            this.props.initState(res.id, res.groups, res.contacts);
+            this.props.initState(res.id, res.username, res.groups, res.contacts);
             this.setState({ redirect: true });
         } else {
             this.setState({ error: res.error });

@@ -6,10 +6,15 @@ import {
     Button,
     Icon,
     Input,
+    Header,
+    Modal,
+    Form,
+    Select,
 } from 'semantic-ui-react';
 import '../../styles/profile.css';
 import GlobalContext from '../../GlobalContext';
 import { Redirect } from 'react-router-dom';
+import { post } from '../../utilities';
 
 function LabelText(props) {
     return(
@@ -114,6 +119,91 @@ class Sidebar extends Component {
     } 
 }
 
+class AddSocial extends Component {
+    static contextType = GlobalContext;
+    constructor(props)  {
+        super(props);
+        this.state = {
+            openModal: false,
+            type: '',
+            link: '',
+        }
+    }
+
+    handleOpen =() => {
+        this.setState({ openModal: true })
+    }
+    handleClose =() => {
+        this.setState({ openModal: false })
+    }
+
+    addLink = () => {
+        console.log(this.state.type);
+        this.context.addSocial({type: this.state.type, link: this.state.link});
+    }
+
+    render() {
+        const SOCIAL_TYPES = [
+            {
+                key: 'linkedin',
+                text: 'linkedin',
+                value: 'linkedin',
+            },
+            {
+                key: 'facebook',
+                text: 'facebook',
+                value: 'facebook',
+            },
+            {
+                key: 'github',
+                text: 'github',
+                value:  'github',
+            },
+            {
+                key: 'instagram',
+                text: 'instagram',
+                value: 'instagram',
+            },
+        ]
+        return (
+            <Modal
+                className='new-connection'
+                open={this.state.openModal}
+                onClose={this.handleClose}
+                size='tiny'
+                trigger={<Button onClick={this.handleOpen} className='add-social'>Add link</Button>}
+            >
+                <Header>
+                    <Header.Content>Add Social Link</Header.Content>
+                </Header>
+                <Form className='new-connection_form'>
+                    <Form.Field
+                        fluid
+                        required
+                        control={Select}
+                        options={SOCIAL_TYPES}
+                        label='Type'
+                        placeholder='Select a type'
+                        onChange={(e, data) => this.setState({ type: data.value })}
+                    />
+                    <Form.Input
+                        fluid
+                        required
+                        label='Link'
+                        placeholder='e.g. facebook.com/username'
+                        onChange={(e,data) => this.setState({ link: e.target.value })}                    
+                    />
+                <Form.Button
+                    onClick={() => {this.addLink(); this.handleClose();}}
+                >
+                    Add
+                </Form.Button>
+                </Form>
+            </Modal>
+        )
+    }
+}
+
 class MainInfo extends Component {
     static contextType = GlobalContext;
     constructor(props) {
@@ -154,6 +244,20 @@ class MainInfo extends Component {
 
         return cards;
     }
+
+    generateSocials = (socials) => {
+        const social_list = socials.map((social) => (
+            <Button
+                circular
+                icon={social.type}
+                onClick={() => window.open(social.link)}
+            />
+        ));
+        if (social_list.length === 0) {
+            return <p className='error'>No social links were added</p>
+        } 
+        return social_list
+    }
     render() {
         if (this.state.redirect) {
             return <Redirect to='/groups/view'/>
@@ -164,13 +268,18 @@ class MainInfo extends Component {
                 <Grid centered divided='vertically' >
                     <Grid.Row stretched>
                         <Grid.Column>
-                            <h2>Groups</h2>
+                            <h2>Socials</h2>
+                            <div className='social-links'>
+                                {this.generateSocials(viewedProfile.socials)}
+                            </div>
+                            <AddSocial/>
+                            {/* <h2>Groups</h2>
                             <div className='group__cards'>
                                 <div className='group__cards-row'>
                                     {this.generateCards()}
                                     {this.placeHolderGroups(viewedProfile.groups.length > 3 ? 0 : 3 - viewedProfile.groups.length)}
                                 </div>
-                            </div>
+                            </div> */}
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row stretched>
