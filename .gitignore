@@ -3,7 +3,9 @@ server/static/react/
 .vscode/
 *.pyc
 __pycache__/
+Pipfile
 venv/
+.env
 .replit
 poetry.lock
 pyproject.toml
