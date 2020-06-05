@@ -3,7 +3,7 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 
 class Contact(db.Document):
     name = db.StringField(required=True, unique=True)
-    email = db.StringField(required=True, unique=True)
+    email = db.EmailField(required=True, unique=True)
     location = db.StringField(required=True)
     date = db.DateField(required=True)
     socials = db.ListField(required=True)
@@ -11,7 +11,8 @@ class Contact(db.Document):
     added_by = db.ReferenceField('User')
 
 class User(db.Document):
-    email = db.EmailField(required=True, unique=True)
+    username = db.StringField(required=True, unique=True)
+    fullanem = db.StringField(required=True, unique=True)
     password = db.StringField(required=True, unique=True, min_length=6)
     contacts = db.ListField(db.ReferenceField('Contact', reverse_delete_rule=db.PULL))
 
