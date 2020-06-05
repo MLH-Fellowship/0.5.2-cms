@@ -21,14 +21,12 @@ In `/client` run the following commands
     
 Navigate to `http://127.0.0.1:5000/` when done! 
 
-### Backend
-#### Technologies Used
+## Technologies Used
 - Mongodb
-- Flask
-- Flask_RESTfulApi
-- Flask_bcrypt
-- Flask_jwt_extended
-- Flask_mongoengine
+- Flask, Flask_RESTfulApi, Flask_bcrypt, Flask_jwt_extended, Flask_mongoengine
+- React
+- semantic-ui-react
+- Typer
 
 #### Documentation
 - [Flask-Restful](https://flask-restful.readthedocs.io/en/latest/quickstart.html)
@@ -36,7 +34,8 @@ Navigate to `http://127.0.0.1:5000/` when done!
 - [Mongoengine](http://mongoengine.org/)
 - [Flask REST API-Part:1- Using MongoDB with Flask](https://dev.to/paurakhsharma/flask-rest-api-part-1-using-mongodb-with-flask-3g7d)
 
-### Frontend
-#### Technologies Used
-- React
-- semantic-ui-react
+## Contributors
+- Amy Lei
+- Fawziyah Alebiosu
+- Ebonne Cabarrus
+
