@@ -6,3 +6,6 @@ __pycache__/
 Pipfile
 venv/
 .env
+.replit
+poetry.lock
+pyproject.toml
