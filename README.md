@@ -12,5 +12,11 @@ In `/server` run the following commands
 In `/client` run the following commands
 1. `$npm install`
 2. `$npm run watch` if in development, else `$npm run build
-
+### Command Line Interface
+ In `/cli` run the following commands
+ 1. `pip install typer`
+    - You must have python 3.6 + installed for this to work! 
+ 2. `python main.py --help`
+    - This will allow you to see all of the commands available to you.
+    
 Navigate to `http://127.0.0.1:5000/` when done! 
