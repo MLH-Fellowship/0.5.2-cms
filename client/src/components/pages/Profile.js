@@ -202,9 +202,9 @@ export default class Profile extends Component {
     }
 
     render() {
-        // if (!this.context.user_id) {
-        //     return <Redirect to='/'/>
-        // }
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
         return(
             <div className='profile'>
                 <Grid stackable>

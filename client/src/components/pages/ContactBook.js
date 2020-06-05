@@ -214,9 +214,9 @@ export default class ContactBook extends Component {
             return <Redirect to='/groups/view' />
         }
         const { groups } = this.context;
-        // if (!this.context.user_id) {
-        //     return <Redirect to='/'/>
-        // }
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
         return (
             <div className='groups'>
                 <h3 className='groups__title page__header'>

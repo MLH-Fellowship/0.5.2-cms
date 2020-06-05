@@ -37,17 +37,20 @@ export class GlobalStore extends Component {
         this.setState({ contacts: updated_contacts });
     }
 
+
     render() {
         return (
             <Context.Provider
                 value={{
                     ...this.state,
+                    initState: (user_id, groups, contacts) => this.setState({ user_id, groups, contacts }),
                     addContact: (contact) => this.setState({ contacts: this.state.contacts.concat(contact) }),
                     addGroup: (group) => this.setState({ groups: this.state.groups.concat(group) }),
                     setViewedProfile: (viewedProfile) => this.setState({ viewedProfile }),
                     setViewedGroup: (viewedGroup) => this.setState({ viewedGroup }),
                     updateNotes: this.updateNotes,
                     updateProfile: this.updateProfile,
+                    clearData: () => this.setState({ user_id: '', groups: [], contacts: [], viewedGroup: {}, viewedProfile: {} })
                 }}
             >
                 {this.props.children}

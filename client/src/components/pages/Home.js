@@ -7,6 +7,7 @@ import {
 import '../../styles/home.css';
 import { post } from '../../utilities';
 import { Redirect } from 'react-router';
+import GlobalContext from '../../GlobalContext';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -26,8 +27,9 @@ class LoginForm extends Component {
 
         console.log(body);
         const res = await post('/api/auth/login', body);
-        console.log(res);
+        console.log(res); 
         if (!res.error) {
+            this.props.initState(res.id, res.groups, res.contacts);
             this.setState({ redirect: true });
         } else {
             this.setState({ error: res.error });
@@ -35,6 +37,9 @@ class LoginForm extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to='/all' />
+        }
         return (
             <Segment className='login-form'>
                 <Form widths='equal'>
@@ -97,6 +102,7 @@ class RegisterForm extends Component {
         console.log(res);
         if (!res.error) {
             console.log(res);
+            this.props.initState(res.id, res.groups, res.contacts);
             this.setState({ redirect: true });
         } else {
             this.setState({ error: res.error });
@@ -157,6 +163,7 @@ class RegisterForm extends Component {
 }
 
 export default class Home extends Component {
+    static contextType = GlobalContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -168,9 +175,9 @@ export default class Home extends Component {
     render() {
         let view; 
         if (this.state.registering) {
-            view = <RegisterForm goBack={() => this.setState({ registering: false })}/>;
+            view = <RegisterForm initState={this.context.initState} goBack={() => this.setState({ registering: false })}/>;
         } else if (this.state.logging_in) {
-            view = <LoginForm goBack={() => this.setState({ logging_in: false })}/>
+            view = <LoginForm initState={this.context.initState} goBack={() => this.setState({ logging_in: false })}/>
         } else {
             view = <div className='home__btns'>
                 <Button

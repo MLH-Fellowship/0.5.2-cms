@@ -20,9 +20,9 @@ export default class GroupPage extends Component {
 
     render() {
         const { viewedGroup } = this.context;
-        // if (!this.context.user_id) {
-        //     return <Redirect to='/'/>
-        // }
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
 
         const cards = viewedGroup.contacts.map((contact) => (
             <Card
