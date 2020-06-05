@@ -9,6 +9,8 @@ import {
 } from 'semantic-ui-react';
 import '../../styles/profile.css';
 import { FAKE_CONTACTS } from '../../data';
+import GlobalContext from '../../GlobalContext';
+import { Redirect } from 'react-router-dom';
 
 function LabelText(props) {
     return(
@@ -156,6 +158,8 @@ class MainInfo extends Component {
 }
 
 export default class Profile extends Component {
+    static contextType = GlobalContext
+
     constructor(props) {
         super(props);
         this.state = {
@@ -170,6 +174,9 @@ export default class Profile extends Component {
     }
     
     render() {
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
         return(
             <div className='profile'>
                 <Grid stackable>

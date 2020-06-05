@@ -11,31 +11,35 @@ import GroupPage from './components/pages/GroupPage';
 import Navbar from './components/modules/Navbar';
 import './styles/App.css';
 import 'semantic-ui-css/semantic.min.css';
+import { GlobalStore } from './GlobalContext';
+import GlobalContext from './GlobalContext';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <Route exact path='/'>
-          <Home/>
-        </Route>
-        <Route path='/all'>
-          <Navbar activeItem='all'/>
-          <AllContacts/>
-        </Route>
-        <Route exact path='/groups'>
-          <Navbar activeItem='groups'/>
-          <ContactBook/>
-        </Route>
-        <Route path='/groups/view'>
-          <Navbar/>
-          <GroupPage/>
-        </Route>
-        <Route path='/profile/view'>
-          <Navbar/>
-          <Profile/>
-        </Route>
-      </Router>
+      <GlobalStore>
+        <Router>
+          <Route exact path='/'>
+            <Home/>
+          </Route>
+          <Route path='/all'>
+            <Navbar activeItem='all'/>
+            <AllContacts/>
+          </Route>
+          <Route exact path='/groups'>
+            <Navbar activeItem='groups'/>
+            <ContactBook/>
+          </Route>
+          <Route path='/groups/view'>
+            <Navbar/>
+            <GroupPage/>
+          </Route>
+          <Route path='/profile/view'>
+            <Navbar/>
+            <Profile/>
+          </Route>
+        </Router>
+      </GlobalStore>
     );
   }
 }

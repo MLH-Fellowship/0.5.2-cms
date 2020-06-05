@@ -192,7 +192,7 @@ export default class Home extends Component {
                         Connections
                     </h1>
                     <p className='home__tagline'>
-                        Your one-stop shop to keep track of the people you meet people
+                        Your one-stop shop to keep track of the people you meet!
                     </p>
                     {view}
                 </main>
