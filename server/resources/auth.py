@@ -12,7 +12,7 @@ class RegisterApi(Resource):
         user.hash_password()
         user.save()
         id = user.id
-        return {'id': str(id)}, 200
+        return {'id': str(id), 'username': user.username, 'groups': user.groups, 'contacts': user.contacts}, 200
 
 
 class LoginApi(Resource):
@@ -25,7 +25,6 @@ class LoginApi(Resource):
         if not authorized:
             return {'error': 'Email or password invalid'}, 401
 
-        # TODO: return the user's list of contacts and groups as well
         expires = datetime.timedelta(days=7)
         access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-        return {'token': access_token}, 200
+        return {'id': str(id), 'username': user.username, 'groups': user.groups, 'contacts': user.contacts}, 200
