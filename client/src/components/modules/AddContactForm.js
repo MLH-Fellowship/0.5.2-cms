@@ -7,6 +7,7 @@ import {
     Header,
 } from 'semantic-ui-react';
 import GlobalContext from '../../GlobalContext';
+import { post, get } from '../../utilities';
 
 export default class AddContactForm extends Component {
     static contextType = GlobalContext
@@ -34,6 +35,7 @@ export default class AddContactForm extends Component {
 
     addContact = async () => {
         const body = {
+            username: this.context.username,
             name: this.state.first_name + ' ' + this.state.last_name,
             email: this.state.email,
             location: this.state.location,
@@ -44,6 +46,8 @@ export default class AddContactForm extends Component {
             image: `https://api.adorable.io/avatars/150/${this.state.first_name}${this.state.last_name}.png`
         }
         this.context.addContact(body);
+        const res = await post('/api/contacts', body);
+        console.log(res);
         this.handleClose();
     }
 

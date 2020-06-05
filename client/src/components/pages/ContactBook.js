@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react';
 import { Link, Redirect } from 'react-router-dom';
 import GlobalContext from '../../GlobalContext';
+import { post } from '../../utilities'; 
 
 const GROUP_TYPES = [
     {
@@ -89,20 +90,22 @@ class AddGroupForm extends Component {
         this.setState({ selected_contacts });
     }
 
-    createGroup = () => {
+    createGroup = async () => {
         const { group, description, selected_contacts, region } = this.state; 
         if (!group || !description || !region) {
             return;
         }
-
+        
         const body = {
             group,
             description,
             region,
+            username: this.context.username,
             contacts: [...selected_contacts],
         };
-        console.log(body);
-        this.context.addGroup(body);
+        const res = await post('/api/groups', body);
+        console.log(res);
+        this.context.setGroups(res.groups);
         this.handleClose();
     }
 

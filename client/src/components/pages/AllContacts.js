@@ -12,8 +12,17 @@ import GlobalContext from '../../GlobalContext';
 
 export class Card extends Component {
     static contextType = GlobalContext
-    
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false,
+        }
+    }
+
     render() {
+        if (this.state.redirect) {
+            return <Redirect to='/profile/view'/>
+        }
         const { contact } = this.props;
         return (
             <div className='profile-card'>
@@ -30,7 +39,7 @@ export class Card extends Component {
                         floated='right' 
                         className='expand-btn'
                         onClick={() => { 
-                            this.props.redirect(); 
+                            this.setState({ redirect: true }); 
                             this.context.setViewedProfile(contact)
                         }}
                     />

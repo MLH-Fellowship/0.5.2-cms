@@ -45,7 +45,7 @@ export default class GroupPage extends Component {
                             <p>{viewedGroup.description}</p>
                             <div className='cards-container'>
                                 {cards}
-                                {this.placeHolderProfiles(viewedGroup.contacts.length > 4 ? 0 : 4 - viewedGroup.contacts.length)}
+                                {this.placeHolderProfiles(viewedGroup.contacts.length > 8 ? 0 : 8 - viewedGroup.contacts.length)}
                             </div>
                         </div>
                     </Grid.Column>

@@ -4,32 +4,28 @@ from database.models import Contact, User
 from flask_restful import Resource
 
 class ContactsApi(Resource):
-    @jwt_required
     def get(self):
         contact = Contact.objects.to_json()
         return Response(contact, mimetype='application/json', status=200)
     
-    @jwt_required
     def post(self):
-        user_id = get_jwt_identity()
         body = request.get_json()
-        user = User.objects.get(id=user_id)
-        contact = Contact(**body, added_by=user)
-        contact.save()
-        user.update(push__contacts=contact)
+        user = User.objects.get(username=body['username'])
+        contact_info = body.copy()
+        del contact_info['username']
+        user.contacts.append(contact_info)
         user.save()
-        id = contact.id
-        return {'id': str(contact_id)}, 200
+        return {'contacts': user.contacts }, 200
 
 
 class ContactApi(Resource):
-    @jwt_required
-    def put(self, id):
-        user_id = get_jwt_identity()
-        contact = Contact.objects.get(id=id, added_by=user_id)
+    def post(self):
         body = request.get_json()
-        Contact.objects.get(id=id).update(**body)
-        return '', 200
+        username = body['username']
+        user = User.objects.get(username=username)
+        user.contacts = body['contacts']
+        user.save()
+        return {'new_contacts': user.contacts }, 200
 
     @jwt_required
     def delete(self, id):
@@ -42,3 +38,20 @@ class ContactApi(Resource):
     def get(self, id):
         contacts = Contact.objects.get(id=id).to_json()
         return Response(contacts, mimetype="application/json", status=200)
+
+class GroupsApi(Resource):
+    def post(self):
+        body = request.get_json()
+        username = body['username']
+        user = User.objects.get(username=username)
+
+        group = {
+            'group': body['group'],
+            'description': body['description'],
+            'region': body['region'],
+            'contacts': body['contacts'],
+        }
+        
+        user.groups.append(group)
+        user.save()
+        return { 'groups': user.groups }, 200
