@@ -1,0 +1,29 @@
+.navbar {
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+.navbar__item {
+    margin: 0 1rem;
+    color: #B5B5B5;
+    transition: color 0.5s ease;
+    font-size: 16px;
+}
+.navbar__item.active,
+.navbar__item:hover {
+    color: #505050;
+}
+
+.massive.icon {
+    font-size: 3em !important;
+}
+
+.ui.popup {
+    box-shadow: none !important;
+}
+
+.ui.menu > .item {
+    font-size: 18px !important;
+}

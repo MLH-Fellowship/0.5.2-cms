@@ -1,0 +1,136 @@
+.profile {
+    position: relative;
+    margin: auto;
+    width: 80vw;
+    height: 90vh;
+}
+
+.ui.image.medium{
+    border-radius: 25px 25px 0 0 ;
+    width: 210px !important;
+  }
+
+.profile-card{
+    border-radius: 25px;
+    box-shadow: 2px 2px 25px rgba(0,0,0,0.05);
+    margin: 0.5rem;
+}
+
+.profile-card__content {
+    padding: 1rem 2rem 0 2rem;
+}
+
+.profile-card__meta,
+.profile-card__name {
+    margin: 0;
+}
+
+.profile-card__name {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Montserrat, sans-serif;
+}
+.profile-card__meta {
+    opacity: 0.5;
+    font-size: 14px;
+}
+.expand-btn {
+    background-color: white !important;
+    margin-right: -1.5rem !important;
+}
+.profile > .ui.grid >.row {
+    padding-bottom: 0;
+}
+
+.sidebar {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.sidebar__content {
+    width: 300px;
+    padding: 1rem 1rem 1rem 0;
+}
+
+.sidebar__name {
+    font-size: 48px;
+}
+.ui.image.large{
+    width: 300px !important;
+    border-radius: 25px;
+}
+
+.labelText {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.labelText > span,
+.labelText > p {
+    font-size: 18px;
+}
+
+.labelText > span {
+    font-weight: 700;
+    min-width: 5rem;
+}
+.labelText > p {
+    font-weight: 300;
+    opacity: 0.75;
+    padding: .67857143em 1em;
+}
+.labelText__field {
+    width: 80%;
+}
+.edit-btn {
+    align-self: flex-start;
+}
+
+.groups__cards,
+.group__cards {
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.groups__cards::-webkit-scrollbar,
+.group__cards::-webkit-scrollbar {
+    display: none;
+}
+.groups__cards-row,
+.group__cards-row {
+    white-space: nowrap;
+}
+.group-card {
+    display: inline-block;
+    width: max(23%, 150px);
+    height: 200px;
+    background-color: #f0f0f0; 
+    margin-right: 0.5rem;
+    border-radius: 20px;
+}
+
+.notes {
+    padding: 1rem;
+    height: 13.5rem;
+    border-color: rgba(34,36,38,.15);
+    border-radius: .28571429rem;
+}
+
+.main-profile{
+    height: 100%;
+    margin: auto;
+}
+.main-profile > .grid {
+    display: flex;
+}
+.navbar {
+    height: 10vh;
+}
+
+.btn-container {
+    margin-top: 1rem;
+}
