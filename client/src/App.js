@@ -14,12 +14,6 @@ import 'semantic-ui-css/semantic.min.css';
 import { GlobalStore } from './GlobalContext';
 import GlobalContext from './GlobalContext';
 
-function NotFound() {
-  return <div>
-    <h1>Page not found</h1>
-  </div>
-}
-
 class App extends Component {
   render() {
     return (
@@ -44,7 +38,6 @@ class App extends Component {
             <Navbar/>
             <Profile/>
           </Route>
-          <Route component={NotFound}/>
         </Router>
       </GlobalStore>
     );
