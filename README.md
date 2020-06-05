@@ -3,11 +3,27 @@ We believe that the connections made during an internship/fellowship/etc is the 
 
 ## To run the app locally
 ### Backend
+
+#### Setup
 In `/server` run the following commands
 1. `$pip install virtualenv`
 2. `$virtualenv venv; source venv/bin/activate`
 3. `$pip install -r requirements.txt`
 4. `$python app.py`
+
+#### Technologies Used
+- Mongodb
+- Flask
+- Flask_RESTfulApi
+- Flask_bcrypt
+- Flask_jwt_extended
+- Flask_mongoengine
+
+#### Documentation
+- [Flask-Restful](https://flask-restful.readthedocs.io/en/latest/quickstart.html)
+- [Mongodb](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+- [Mongoengine](http://mongoengine.org/)
+- [Flask REST API-Part:1- Using MongoDB with Flask](https://dev.to/paurakhsharma/flask-rest-api-part-1-using-mongodb-with-flask-3g7d)
 ### Frontend
 In `/client` run the following commands
 1. `$npm install`
