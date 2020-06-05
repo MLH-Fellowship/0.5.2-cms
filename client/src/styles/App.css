@@ -109,3 +109,7 @@ label {
     bottom: 2rem;
     right: 2rem;
 }
+
+a {
+    cursor: pointer;
+}

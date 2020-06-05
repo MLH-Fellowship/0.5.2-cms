@@ -8,7 +8,6 @@ import {
     Input,
 } from 'semantic-ui-react';
 import '../../styles/profile.css';
-import { FAKE_CONTACTS } from '../../data';
 import GlobalContext from '../../GlobalContext';
 import { Redirect } from 'react-router-dom';
 

@@ -11,17 +11,15 @@ export default class GroupPage extends Component {
     static contextType = GlobalContext
 
     render() {
-        if (!this.context.user_id) {
-            return <Redirect to='/'/>
-        }
+        // if (!this.context.user_id) {
+        //     return <Redirect to='/'/>
+        // }
 
         const cards = FAKE_GROUPS[0].contacts.map((contact) => (
             <Card
                 className='profile-card'
-                id={contact.id}
-                name={contact.name}
-                image={contact.image}
-                date_met={contact.date_met}
+                contact={contact}
+                redirect={() => {}}
             />
         ))
 

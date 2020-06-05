@@ -43,7 +43,7 @@ export class GlobalStore extends Component {
                 value={{
                     ...this.state,
                     addContact: (contact) => this.setState({ contacts: this.state.contacts.concat(contact) }),
-                    addGroup: (group) => this.setState({ contacts: this.state.contacts.concat(group) }),
+                    addGroup: (group) => this.setState({ groups: this.state.groups.concat(group) }),
                     setViewedProfile: (viewedProfile) => this.setState({ viewedProfile }),
                     setViewedGroup: (viewedGroup) => this.setState({ viewedGroup }),
                     updateNotes: this.updateNotes,
