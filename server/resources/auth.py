@@ -1,6 +1,8 @@
 from flask import Response, request
 from flask_jwt_extended import create_access_token
 from database.models import User
+from database.models import Contact
+from database.models import Group
 from flask_restful import Resource
 import datetime
 
@@ -19,6 +21,7 @@ class LoginApi(Resource):
     def post(self):
         body = request.get_json()
         user = User.objects.get(username=body.get('username'))
+        print(user)
         # TODO: account for case where username was invalid 
         authorized = user.check_password(body.get('password'))
 

@@ -24,4 +24,4 @@ def home(path=''):
 initialize_db(app)
 initialize_routes(api)
 
-app.run()
+app.run(debug=True)

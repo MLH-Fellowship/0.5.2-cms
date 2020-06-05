@@ -99,3 +99,7 @@ label {
 .new-connection__form {
     margin: 2em 0;
 }
+
+.error {
+    font-size: 14px;
+  }
