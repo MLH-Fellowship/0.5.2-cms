@@ -7,7 +7,8 @@ import {
     Button,
     Image,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import GlobalContext from '../../GlobalContext';
 
 export const Card = (props) => {
     return (
@@ -28,12 +29,19 @@ export const Card = (props) => {
 }
 
 export default class AllContacts extends Component {
+    static contextType = GlobalContext;
+
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+        }
     }
     
     render() {
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
+
         const cards = FAKE_CONTACTS.map((contact, i) => (
             <Card
                 {...contact}

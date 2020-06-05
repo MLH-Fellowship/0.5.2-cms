@@ -9,7 +9,8 @@ import {
     Icon,
     Select,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import GlobalContext from '../../GlobalContext';
 
 const GROUP_TYPES = [
     {
@@ -121,6 +122,8 @@ class AddGroupForm extends Component {
 }
 
 export default class ContactBook extends Component {
+    static contextType = GlobalContext;
+
     generateCards = () => {
         return FAKE_GROUPS.map((group,i) => (
             <div
@@ -145,6 +148,9 @@ export default class ContactBook extends Component {
     }
 
     render() {
+        if (!this.context.user_id) {
+            return <Redirect to='/'/>
+        }
         return (
             <div className='groups'>
                 <h3 className='groups__title page__header'>
