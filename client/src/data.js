@@ -45,3 +45,20 @@ export const FAKE_CONTACTS = [
         image: 'https://api.adorable.io/avatars/150/test.png',
     },
 ];
+
+export const FAKE_GROUPS = [
+    {
+        name: 'MLH Fellows',
+        type: 'Friends',
+        contacts: FAKE_CONTACTS,
+        description: 'Friendly people!!!',
+    },
+    {
+        name: 'The Lei\'s',
+        type: 'Family',
+        contacts: [],
+        description: 'Friendly people!!!',
+    },
+];
+
+

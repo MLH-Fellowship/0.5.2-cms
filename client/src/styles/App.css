@@ -90,11 +90,11 @@ label {
 .inverted-btn + .inverted-btn {
     margin-left: 0.5rem !important;
 }
-
+.new-group,
 .new-connection {
     padding: 1em 2em 2em 2em;
 }
-  
+.new-group__form,
 .new-connection__form {
     margin: 2em 0;
 }

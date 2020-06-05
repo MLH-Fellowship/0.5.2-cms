@@ -9,7 +9,39 @@
     font-size: 48px;
 }
 
+.group-card {
+    position: relative;
+}
+
 .group-card.large {
     height: 400px;
     width: max(20%, 300px);
+}
+
+.selected-user {
+    display: inline-block;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 0.5em 0.75em;
+    border-radius: 25px;
+    margin-right: 0.25rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.group-card > a > .icon,
+.group-card > a > h3 {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 24px;
+}
+.group-card > a > h3 {
+    left: 1rem;
+}
+.group-card > a >.icon {
+    right: 1rem;
+}
+
+a {
+    color: #505050 !important;
 }
