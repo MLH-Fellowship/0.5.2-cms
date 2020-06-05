@@ -8,7 +8,6 @@ import {
     Input,
 } from 'semantic-ui-react';
 import '../../styles/profile.css';
-import { FAKE_CONTACTS } from '../../data';
 import GlobalContext from '../../GlobalContext';
 import { Redirect } from 'react-router-dom';
 
@@ -30,12 +29,18 @@ function LabelText(props) {
 }
 
 class Sidebar extends Component {
+    static contextType = GlobalContext;
+
     constructor(props) {
         super(props);
         this.state = { 
             edit: false,
-            edited_profile: { ...this.props.profile },
+            edited_profile: {},
         }
+    }
+
+    componentDidMount() {
+        this.setState({ edited_profile: { ...this.context.viewedProfile }})
     }
 
     startEdit = () => {
@@ -43,21 +48,22 @@ class Sidebar extends Component {
     }
 
     saveEdit = () => {
-        this.props.updateProfile(this.state.edited_profile);
+        this.context.updateProfile(this.state.edited_profile);
         this.setState({ edit: false });
     }
 
     handleOnChange = (key, val) => {
-        const edited_profile = {...this.state.edited_profile};
+        const { edited_profile } = this.state;
         edited_profile[key] = val;
         this.setState({ edited_profile });
     }
 
     render() {
+        const { viewedProfile } = this.context;
         let buttons;
         if (this.state.edit) {
             buttons = <div>
-                <Button onClick={() => this.setState({ edit: false, edited_profile: {...this.props.profile} })}> Cancel</Button>
+                <Button onClick={() => this.setState({ edit: false, edited_profile: {...viewedProfile} })}> Cancel</Button>
                 <Button icon labelPosition='left' onClick={this.saveEdit}> Save <Icon name='save'/></Button>
             </div>
         } else {
@@ -76,29 +82,29 @@ class Sidebar extends Component {
             <div className='sidebar'>
                 <Image
                     size='large'
-                    src={this.props.profile.image}
+                    src={viewedProfile.image}
                 />
                 <div className='sidebar__content'>
-                    <h2 className='sidebar__name'>{this.props.profile.name}</h2>
+                    <h2 className='sidebar__name'>{viewedProfile.name}</h2>
                     <LabelText 
                         edit={this.state.edit} 
                         type='month' 
                         title='Met on' 
-                        text={this.props.profile.date_met}
-                        handleOnChange={(val) => this.handleOnChange('date_met', val)}
+                        text={viewedProfile.date}
+                        handleOnChange={(val) => this.handleOnChange('date', val)}
                         />
                     <LabelText 
                         edit={this.state.edit}
                         type='text' 
                         title='From' 
-                        text={this.props.profile.location}
+                        text={viewedProfile.location}
                         handleOnChange={(val) => this.handleOnChange('location', val)}
                         />
                     <LabelText 
                         edit={this.state.edit} 
                         type='email' 
                         title='Email' 
-                        text={this.props.profile.email}
+                        text={viewedProfile.email}
                         handleOnChange={(val) => this.handleOnChange('email', val)}
                         />
                 </div>
@@ -109,12 +115,37 @@ class Sidebar extends Component {
 }
 
 class MainInfo extends Component {
+    static contextType = GlobalContext;
     constructor(props) {
         super(props);
         this.state = {
-            edited_notes: this.props.notes,
+            redirect: false,
+            edited_notes: '',
         }
     }
+
+    componentDidMount() {
+        this.setState({ edited_notes: this.context.viewedProfile.notes });
+    }
+    generateCards = () => {
+        return this.context.viewedProfile.groups.map((group,i) => (
+            <div
+                key={i}
+                className={`group-card placeholder ${group.region}`}
+            >
+                <a onClick={() => {
+                    this.setState({ redirect: true });
+                    this.setViewedGroup(group);
+                }}>
+                    <h3>
+                        {group.name}
+                    </h3>
+                    <Icon name='arrow right'/>
+                </a>
+            </div>
+        ))
+    }
+
     placeHolderGroups = (num) => {
         const cards = [];
         for(let i = 0; i < num; i++) {
@@ -124,6 +155,10 @@ class MainInfo extends Component {
         return cards;
     }
     render() {
+        if (this.state.redirect) {
+            return <Redirect to='/groups/view'/>
+        }
+        const { viewedProfile } = this.context;
         return (
             <div className='main-profile'>
                 <Grid centered divided='vertically' >
@@ -132,7 +167,8 @@ class MainInfo extends Component {
                             <h2>Groups</h2>
                             <div className='group__cards'>
                                 <div className='group__cards-row'>
-                                    {this.placeHolderGroups(4)}
+                                    {this.generateCards()}
+                                    {this.placeHolderGroups(viewedProfile.groups.length > 3 ? 0 : 3 - viewedProfile.groups.length)}
                                 </div>
                             </div>
                         </Grid.Column>
@@ -146,7 +182,7 @@ class MainInfo extends Component {
                                 onChange={(e, data) => this.setState({ edited_notes: e.target.value })}    
                             />
                             <div className='btn-container'>
-                                <Button onClick={() => this.setState({ edited_notes: this.props.notes })}>Undo All</Button>
+                                <Button onClick={() => this.setState({ edited_notes: viewedProfile.notes })}>Undo All</Button>
                                 <Button onClick={() => this.props.saveNotes(this.state.edited_notes)}>Save Changes</Button>
                             </div>
                         </Grid.Column>
@@ -162,35 +198,23 @@ export default class Profile extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            profile: {...FAKE_CONTACTS[0] },
-        }
+        this.state = {}
     }
 
-    updateNotes = (notes) => {
-        const profile = {...this.state.profile};
-        profile.notes = notes;
-        this.setState({ profile });
-    }
-    
     render() {
-        if (!this.context.user_id) {
-            return <Redirect to='/'/>
-        }
+        // if (!this.context.user_id) {
+        //     return <Redirect to='/'/>
+        // }
         return(
             <div className='profile'>
                 <Grid stackable>
                     <Grid.Row>
                         <Grid.Column width={6}>
-                            <Sidebar 
-                                profile={this.state.profile}
-                                updateProfile={(profile) => this.setState({ profile })}
-                                />
+                            <Sidebar />
                         </Grid.Column>
                         <Grid.Column width={10}>
                             <MainInfo
-                                saveNotes={this.updateNotes}
-                                notes={this.state.profile.notes}
+                                saveNotes={this.context.updateNotes}
                             />
                         </Grid.Column>
                     </Grid.Row>
