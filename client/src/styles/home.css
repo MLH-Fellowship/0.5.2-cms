@@ -1,0 +1,33 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../assets//background.svg');
+    background-size: cover;
+}
+.home__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+}
+.home__title,
+.home__tagline {
+    color: white;
+    margin: 0;
+} 
+
+.home__btns,
+.login__btns,
+.register__btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.login-form,
+.register-form {
+  width: 400px;
+}

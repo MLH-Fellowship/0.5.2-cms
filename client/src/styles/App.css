@@ -4,6 +4,7 @@
     --title-font-size: 80px;
     --body-font-size: 18px;
     --primary-color: #373648;
+    --primary-color-light: #808080;
     --secondary-color: #E48900;
 }
 
@@ -11,6 +12,30 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-profile {
+    width: 250px;
+    margin-right: 1rem;
+}
+
+.contacts {
+    width: 80vw;
+    height: 90vh;
+    margin: auto;
+    position: relative;
+}
+.contacts__title {
+    font-size: 48px;
+}
+.fa-btn {
+    position: absolute !important;
+    bottom: 10px;
+    right: 10px;
+    box-shadow: none !important;
 }
 
 body {
@@ -25,6 +50,8 @@ h4,
 h5 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
 }
 
 h1 {
@@ -37,6 +64,7 @@ ul,
 label {
     font-size: var(--body-font-size);
     font-family: 'Roboto', sans-serif;
+    color: var(--primary-color-light);
 }
 
 .home {
@@ -44,7 +72,7 @@ label {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('../assets//background.svg');
+    background-image: url('../assets/background.svg');
     background-size: cover;
 }
 .home__container {
@@ -57,14 +85,17 @@ label {
 .home__title,
 .home__tagline {
     color: white;
+    margin: 0;
 } 
 
 .inverted-btn + .inverted-btn {
     margin-left: 0.5rem !important;
 }
-
-.inverted-btn {
-    border-color: white !important;
-    color: white !important;
-    margin: 1rem 0 !important;
+.new-group,
+.new-connection {
+    padding: 1em 2em 2em 2em;
+}
+.new-group__form,
+.new-connection__form {
+    margin: 2em 0;
 }

@@ -5,6 +5,7 @@ server/static/react/
 __pycache__/
 Pipfile
 venv/
+server/templates/index.html
 .env
 .replit
 poetry.lock

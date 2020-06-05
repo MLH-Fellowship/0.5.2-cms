@@ -46,3 +46,15 @@ export const post = (endpoint, body = {}) => {
           throw `POST request to ${endpoint} failed with error: ${err}`
       });
 }
+
+export const put = (endpoint, body = {}) => {
+    return fetch(endpoint, {
+        method: "PUT",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(body),
+      })
+      .then(toJSON)
+      .catch((err) => {
+          throw `POST request to ${endpoint} failed with error: ${err}`
+      });
+}
