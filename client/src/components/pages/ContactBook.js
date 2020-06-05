@@ -91,6 +91,10 @@ class AddGroupForm extends Component {
 
     createGroup = () => {
         const { group, description, selected_contacts, region } = this.state; 
+        if (!group || !description || !region) {
+            return;
+        }
+        
         const body = {
             group,
             description,
