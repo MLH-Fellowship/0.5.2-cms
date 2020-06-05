@@ -3,5 +3,10 @@ server/static/react/
 .vscode/
 *.pyc
 __pycache__/
+Pipfile
 venv/
 server/templates/index.html
+.env
+.replit
+poetry.lock
+pyproject.toml
