@@ -10,22 +10,34 @@ import {
 import { Link, Redirect } from 'react-router-dom';
 import GlobalContext from '../../GlobalContext';
 
-export const Card = (props) => {
-    return (
-        <div className='profile-card'>
-            <Image
-                size='medium'
-                src={props.image}
-            />
-            <div className='profile-card__content'>
-                <h3 className='profile-card__name'>{props.name}</h3>
-                <p className='profile-card__meta'>{props.date_met}</p>
-                <Link to={`/profile/view`}>
-                    <Button circular icon='arrow right' floated='right' className='expand-btn'/>
-                </Link>
+export class Card extends Component {
+    static contextType = GlobalContext
+    
+    render() {
+        const { contact } = this.props;
+        return (
+            <div className='profile-card'>
+                <Image
+                    size='medium'
+                    src={contact.image}
+                />
+                <div className='profile-card__content'>
+                    <h3 className='profile-card__name'>{contact.name}</h3>
+                    <p className='profile-card__meta'>{contact.date}</p>
+                    <Button 
+                        circular 
+                        icon='arrow right' 
+                        floated='right' 
+                        className='expand-btn'
+                        onClick={() => { 
+                            this.props.redirect(); 
+                            this.context.setViewedProfile(contact)
+                        }}
+                    />
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default class AllContacts extends Component {
@@ -34,17 +46,22 @@ export default class AllContacts extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            redirect: false,
         }
     }
     
     render() {
-        if (!this.context.user_id) {
-            return <Redirect to='/'/>
-        }
+        // if (!this.context.user_id) {
+        //     return <Redirect to='/'/>
+        // }
 
-        const cards = FAKE_CONTACTS.map((contact, i) => (
+        if (this.state.redirect) {
+            return <Redirect to='/profile/view'/>
+        }
+        const cards = this.context.contacts.map((contact, i) => (
             <Card
-                {...contact}
+                redirect={() => this.setState({ redirect: true })}
+                contact={contact}
             />
         ))
         

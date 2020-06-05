@@ -103,3 +103,9 @@ label {
 .error {
     font-size: 14px;
   }
+
+.add-contact {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+}

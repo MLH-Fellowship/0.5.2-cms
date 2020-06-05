@@ -148,9 +148,9 @@ export default class ContactBook extends Component {
     }
 
     render() {
-        if (!this.context.user_id) {
-            return <Redirect to='/'/>
-        }
+        // if (!this.context.user_id) {
+        //     return <Redirect to='/'/>
+        // }
         return (
             <div className='groups'>
                 <h3 className='groups__title page__header'>

@@ -6,8 +6,11 @@ import {
     Icon,
     Header,
 } from 'semantic-ui-react';
+import GlobalContext from '../../GlobalContext';
 
 export default class AddContactForm extends Component {
+    static contextType = GlobalContext
+
     constructor(props) {
         super(props);
         this.state = {
@@ -38,9 +41,9 @@ export default class AddContactForm extends Component {
             socials: [],
             notes: this.state.notes,
             groups: [],
+            image: `https://api.adorable.io/avatars/150/${this.state.first_name}${this.state.last_name}.png`
         }
-
-        console.log(body);
+        this.context.addContact(body);
         this.handleClose();
     }
 
@@ -51,7 +54,7 @@ export default class AddContactForm extends Component {
                 open={this.state.openModal}
                 onClose={this.handleClose}
                 className='new-connection'
-                trigger={<Button icon floated='right' onClick={this.handleOpen}> <Icon name='add user'/>  &nbsp;Add Contact</Button>}
+                trigger={<Button className='add-contact' icon floated='right' onClick={this.handleOpen}> <Icon name='add user'/>  &nbsp;Add Contact</Button>}
                 size='tiny'>
                 <Header as='h2'>
                     <Icon name='user circle outline'/>
