@@ -48,17 +48,19 @@ export const FAKE_CONTACTS = [
 
 export const FAKE_GROUPS = [
     {
+        id: 0,
+        region: 'Global',
         name: 'MLH Fellows',
         type: 'Friends',
         contacts: FAKE_CONTACTS,
         description: 'Friendly people!!!',
     },
     {
+        id: 1,
+        region: 'Americas',
         name: 'The Lei\'s',
         type: 'Family',
         contacts: [],
         description: 'Friendly people!!!',
     },
 ];
-
-

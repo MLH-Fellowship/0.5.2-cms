@@ -51,6 +51,7 @@ h5 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     color: var(--primary-color);
+    margin: 0;
 }
 
 h1 {
@@ -71,7 +72,7 @@ label {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('../assets//background.svg');
+    background-image: url('../assets/background.svg');
     background-size: cover;
 }
 .home__container {

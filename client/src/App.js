@@ -7,6 +7,7 @@ import Home from './components/pages/Home';
 import AllContacts from './components/pages/AllContacts';
 import Profile from './components/pages/Profile';
 import ContactBook from './components/pages/ContactBook';
+import GroupPage from './components/pages/GroupPage';
 import Navbar from './components/modules/Navbar';
 import './styles/App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -22,12 +23,16 @@ class App extends Component {
           <Navbar activeItem='all'/>
           <AllContacts/>
         </Route>
-        <Route path='/groups'>
+        <Route exact path='/groups'>
           <Navbar activeItem='groups'/>
           <ContactBook/>
         </Route>
-        <Route path='/profile/:id'>
-          <Navbar activeItem=''/>
+        <Route path='/groups/view'>
+          <Navbar/>
+          <GroupPage/>
+        </Route>
+        <Route path='/profile/view'>
+          <Navbar/>
           <Profile/>
         </Route>
       </Router>

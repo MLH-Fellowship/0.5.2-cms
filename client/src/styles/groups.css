@@ -11,6 +11,9 @@
 
 .group-card {
     position: relative;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 2px 2px 25px rgba(0,0,0,0.05);
 }
 
 .group-card.large {
@@ -34,6 +37,8 @@
     position: absolute;
     bottom: 1rem;
     font-size: 24px;
+    color: white !important;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 .group-card > a > h3 {
     left: 1rem;
@@ -42,6 +47,42 @@
     right: 1rem;
 }
 
-a {
-    color: #505050 !important;
+.group-img{
+    position: absolute;
+    top:0;
+    width: 25%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.Americas{
+    background-image: url('../assets/Americas.svg');
+}
+.EMEA{
+    background-image: url('../assets/EMEA.svg');
+}
+.APAC{
+    background-image: url('../assets/APAC.svg');
+}
+.Global{
+    background-image: url('../assets/Global.svg');
+}
+
+.group__info {
+    height: 90vh;
+    padding: 0 2rem 3rem 2rem;
+    overflow-y: scroll;
+}
+.group__name {
+    font-size: 48px;
+}
+
+.group__info-row {
+    padding-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .group-img {
+        display: none;
+    }
 }

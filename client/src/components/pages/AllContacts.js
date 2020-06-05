@@ -9,7 +9,7 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const Card = (props) => {
+export const Card = (props) => {
     return (
         <div className='profile-card'>
             <Image
@@ -19,7 +19,7 @@ const Card = (props) => {
             <div className='profile-card__content'>
                 <h3 className='profile-card__name'>{props.name}</h3>
                 <p className='profile-card__meta'>{props.date_met}</p>
-                <Link to={`/profile/${props.id}`}>
+                <Link to={`/profile/view`}>
                     <Button circular icon='arrow right' floated='right' className='expand-btn'/>
                 </Link>
             </div>

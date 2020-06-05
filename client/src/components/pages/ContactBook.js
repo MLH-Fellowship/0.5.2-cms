@@ -13,26 +13,27 @@ import { Link } from 'react-router-dom';
 
 const GROUP_TYPES = [
     {
-        key: 'Professional',
-        text: 'Professional',
-        value: 'Professional',
+        key: 'Global',
+        text: 'Global',
+        value: 'Global',
     },
     {
-        key: 'Family',
-        text: 'Family',
-        value: 'Family',
+        key: 'Americas',
+        text: 'Americas',
+        value: 'Americas',
     },
     {
-        key: 'Friends',
-        text: 'Friends',
-        value: 'Friends',
+        key: 'EMEA',
+        text: 'EMEA',
+        value:  'EMEA',
     },
     {
-        key: 'Aquaintances',
-        text: 'Aquaintances',
-        value: 'Aquaintances',
+        key: 'APAC',
+        text: 'APAC',
+        value: 'APAC',
     },
 ]
+
 
 function SelectedUser(props) {
     return (
@@ -94,8 +95,8 @@ class AddGroupForm extends Component {
                             fluid
                             control={Select}
                             options={GROUP_TYPES}
-                            label='Type'
-                            placeholder='Type'
+                            label='Region'
+                            placeholder='Region'
                         />
                     </Form.Group>
                     <Form.Field
@@ -124,10 +125,9 @@ export default class ContactBook extends Component {
         return FAKE_GROUPS.map((group,i) => (
             <div
                 key={i}
-                style={{ backgroundColor: '#b0b0b0'}} // will be replaced by an img
-                className='group-card placeholder large'
+                className={`group-card placeholder large ${group.region}`}
             >
-                <Link>
+                <Link to='/groups/view'>
                     <h3>
                         {group.name}
                     </h3>
