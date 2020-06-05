@@ -94,7 +94,7 @@ class AddGroupForm extends Component {
         if (!group || !description || !region) {
             return;
         }
-        
+
         const body = {
             group,
             description,
@@ -112,7 +112,7 @@ class AddGroupForm extends Component {
                 open={this.state.openModal}
                 onClose={this.handleClose}
                 className='new-group'
-                trigger={<Button floated='right' icon onClick={this.handleOpen}> <Icon name='group'/>  &nbsp;Create Group</Button>}
+                trigger={<Button className='create-group' floated='right' icon onClick={this.handleOpen}> <Icon name='group'/>  &nbsp;Create Group</Button>}
                 size='tiny'>
                 <Header as='h2'>
                     <Icon name='group'/>

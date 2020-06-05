@@ -34,6 +34,16 @@
     opacity: 0.5;
     font-size: 14px;
 }
+
+.profile-card.placeholder{
+    width: 210px;
+    height: 304px;
+    border-radius: 25px;
+    box-shadow: none;
+    background-color: #f0f0f0;
+    margin: 0.5rem;
+  }
+  
 .expand-btn {
     background-color: white !important;
     margin-right: -1.5rem !important;

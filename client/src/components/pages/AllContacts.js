@@ -49,6 +49,14 @@ export default class AllContacts extends Component {
             redirect: false,
         }
     }
+
+    placeHolderProfiles = (num) => {
+        const cards = [];
+        for(let i = 0; i < num; i++) {
+            cards.push(<div className='profile-card placeholder'></div>);
+        }
+        return cards;
+    }
     
     render() {
         // if (!this.context.user_id) {
@@ -73,6 +81,7 @@ export default class AllContacts extends Component {
                     </h3>
                     <main className='cards-container'>
                         {cards}
+                        {this.placeHolderProfiles(this.context.contacts.length > 5 ? 0 : 5 - this.context.contacts.length)}
                     </main>
                     <AddContactForm/>
                 </div>

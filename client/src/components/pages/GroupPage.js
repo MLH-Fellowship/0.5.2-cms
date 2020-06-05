@@ -10,6 +10,14 @@ import GlobalContext from '../../GlobalContext';
 export default class GroupPage extends Component {
     static contextType = GlobalContext
 
+    placeHolderProfiles = (num) => {
+        const cards = [];
+        for(let i = 0; i < num; i++) {
+            cards.push(<div className='profile-card placeholder'></div>);
+        }
+        return cards;
+    }
+
     render() {
         const { viewedGroup } = this.context;
         // if (!this.context.user_id) {
@@ -28,7 +36,7 @@ export default class GroupPage extends Component {
         <>
             <div 
                 className={`group-img ${viewedGroup.region}`}
-                ></div>
+            ></div>
             <Grid stackable stretched>
                 <Grid.Row className='group__info-row'>
                     <Grid.Column floated='right' width={12}>
@@ -37,6 +45,7 @@ export default class GroupPage extends Component {
                             <p>{viewedGroup.description}</p>
                             <div className='cards-container'>
                                 {cards}
+                                {this.placeHolderProfiles(viewedGroup.contacts.length > 4 ? 0 : 4 - viewedGroup.contacts.length)}
                             </div>
                         </div>
                     </Grid.Column>

@@ -104,6 +104,7 @@ label {
     font-size: 14px;
   }
 
+.create-group,
 .add-contact {
     position: absolute;
     bottom: 2rem;
