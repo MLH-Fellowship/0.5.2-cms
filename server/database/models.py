@@ -6,7 +6,7 @@ class Contact(db.Document):
     email = db.EmailField(required=True)
     location = db.StringField(required=True)
     date = db.StringField(required=True)
-    group = db.ReferenceField('Group')
+    groups = db.ListField(db.ReferenceField('Group'), default=list)
     socials = db.ListField(required=True)
     notes = db.StringField(required=True)
     added_by = db.ReferenceField('User')
@@ -14,7 +14,6 @@ class Contact(db.Document):
 class Group(db.Document):
     group = db.StringField(required=True)
     description = db.StringField(required=True)
-    contacts = db.ListField(db.ReferenceField('Contact'), default=list)
     added_by = db.ReferenceField('User')
 
 class User(db.Document):
